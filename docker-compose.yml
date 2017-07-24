@@ -1,0 +1,15 @@
+version: "2.1"
+services:
+  composer:
+    image: composer
+    volumes:
+      - ./site:/app
+  app:
+    build: .
+    volumes:
+      - ./:/var/www
+    environment:
+      - VIRTUAL_HOST=laravel.dev
+    network_mode: bridge
+    ports:
+      - 9000:9000
