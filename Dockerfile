@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y libmcrypt-dev zlib1g-dev \
     && docker-php-ext-enable imagick \
     && docker-php-ext-install mcrypt pdo_mysql zip
 
-RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf
+RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf && \
+a2enmod rewrite 
 
 COPY . /var/www/html
